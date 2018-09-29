@@ -5,12 +5,16 @@
  */
 package co.edu.uniandes.tallerpodam.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import uk.co.jemos.podam.common.PodamCollection;
 import uk.co.jemos.podam.common.PodamLongValue;
 
 @Entity
@@ -31,6 +35,11 @@ public class User {
 	@Column(name = "created_date")
 	private Date createdDate;
 
+        /*@PodamCollection(nbrElements=5)
+        @OneToMany(mappedBy="user")
+        List<Book> listBook = new ArrayList<Book>();
+       */
+        
 	public Long getUserid() {
 		return userid;
 	}
@@ -62,4 +71,14 @@ public class User {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+
+    /*public List<Book> getListBook() {
+        return listBook;
+    }
+
+    public void setListBook(List<Book> listBook) {
+        this.listBook = listBook;
+    }*/
+        
+        
 }

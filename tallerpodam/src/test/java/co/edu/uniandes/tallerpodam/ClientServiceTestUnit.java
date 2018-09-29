@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.tallerpodam;
 
+import co.edu.uniandes.tallerpodam.model.Book;
 import co.edu.uniandes.tallerpodam.model.User;
+import co.edu.uniandes.tallerpodam.service.BookService;
 import co.edu.uniandes.tallerpodam.service.UserService;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -61,6 +63,24 @@ public class ClientServiceTestUnit {
             Assert.assertEquals(newEntity.getCreatedBy(), entity.getCreatedBy());
             Assert.assertEquals(newEntity.getUserid(), entity.getUserid());
             Assert.assertEquals(newEntity.getUsername(), entity.getUsername());
+          
+    }
+    
+    
+    @Test
+    public void testBookService() throws Exception {
+
+
+            BookService service = new BookService();
+            PodamFactory factory = new PodamFactoryImpl();
+            Book newEntity = factory.manufacturePojo(Book.class);
+            service.persist(newEntity);
+
+            Book entity = service.findById(newEntity.getId());
+            
+            Assert.assertNotNull(entity);
+
+            
           
     }
 }
